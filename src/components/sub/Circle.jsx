@@ -1,12 +1,22 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Matter, { Events } from 'matter-js';
 
-const Circle = () => {
+const Circle = (props) => {
   const wrapperRef = useRef(null);
   const canvasRef = useRef(null);
   const [circles, setCircles] = useState([]);
   const [circlePositions, setCirclePositions] = useState([]);
   const isMobile = window.innerWidth < 768;
+
+  const [delayedDarkMode, setDelayedDarkMode] = useState(props.darkMode);
+
+  useEffect(() => {
+    const delayTimer = setTimeout(() => {
+      setDelayedDarkMode(props.darkMode);
+    }, 500); // Adjust the delay time as needed (500 milliseconds in this example)
+
+    return () => clearTimeout(delayTimer);
+  }, [props.darkMode]);
 
   useEffect(() => {
     const { Engine, Render, Runner, Common, MouseConstraint, Mouse, Composite, Bodies } = Matter;
@@ -57,15 +67,15 @@ const Circle = () => {
 
         const circle = Bodies.circle(x, y, circleRadius, {
           render: {
-            fillStyle: 'rgba(255, 255, 255, 0.4)',
+            fillStyle: props.darkMode? 'rgba(0, 0, 0, 0.4)':'rgba(255, 255, 255, 0.4)',
             lineWidth: 2,
-            strokeStyle: 'rgba(0, 0, 0, 0.6)',
+            strokeStyle: props.darkMode?'rgba(255, 255, 255, 0.6)':'rgba(0, 0, 0, 0.6)',
             keepStatic: true,
           },
           text: {
             content: text[i],
             style: {
-              color: 'black',
+              color: props.darkMode?'white':'black',
               font: isMobile?'8px Arial':'16px Arial',
               textAlign: 'center',
             },
@@ -94,16 +104,16 @@ const Circle = () => {
     Composite.add(world, [
       
       Bodies.rectangle(wrapper.clientWidth / 2, 0, wrapper.clientWidth, 50, { isStatic: true, render: { fillStyle: 'transparent',
-      strokeStyle: 'black',
+      strokeStyle:  props.darkMode?'white':'black',
       lineWidth: 2  } }),
       Bodies.rectangle(wrapper.clientWidth / 2, wrapper.clientHeight, wrapper.clientWidth, 50, { isStatic: true, render: { fillStyle: 'transparent',
-      strokeStyle: 'black',
+      strokeStyle:  props.darkMode?'white':'black',
       lineWidth: 2  } }),
       Bodies.rectangle(wrapper.clientWidth, wrapper.clientHeight / 2, 50, wrapper.clientHeight, { isStatic: true, render: { fillStyle: 'transparent',
-      strokeStyle: 'black',
+      strokeStyle:  props.darkMode?'white':'black',
       lineWidth: 2  } }),
       Bodies.rectangle(0, wrapper.clientHeight / 2, 50, wrapper.clientHeight, { isStatic: true, render: { fillStyle: 'transparent',
-      strokeStyle: 'black',
+      strokeStyle:  props.darkMode?'white':'black',
       lineWidth: 2 } }),
 
     ]);
@@ -143,7 +153,7 @@ const Circle = () => {
       Runner.stop(runner);
       Events.off(engine, 'afterUpdate', updateCirclePositions);
     };
-  }, []);
+  }, [delayedDarkMode]);
 
   return (
     <div ref={wrapperRef} className='w-2/4 h-2/4  relative' >

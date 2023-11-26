@@ -19,8 +19,10 @@ function Hero(props) {
   const isTablet = window.innerWidth < 1024;
 
   return (
-    <motion.div className='w-full h-screen lg:flex md:flex-row 'ref={props.containerRef} 
-    style={{boxShadow: "4px 4px 5px -2px rgba(0, 0, 0, 0.2)"}}
+    <motion.div className="w-full h-screen lg:flex md:flex-row"
+    style={{boxShadow: props.darkMode?props.doAnimate? "0 25px 50px -12px rgba(255, 255, 255, 0.25)":"":
+    props.doAnimate?"0 25px 50px -12px rgba(0, 0, 0, 0.25)":""}}
+    ref={props.containerRef} 
     animate={props.doAnimate ? 'animate' : ''}
     variants={props.Pagevariants}>
 

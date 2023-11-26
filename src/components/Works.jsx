@@ -167,7 +167,8 @@ function Works(props) {
   return (
     <motion.div className="" animate={props.doAnimate ? 'animate' : ''}
     variants={props.Pagevariants} 
-    style={{boxShadow: props.doAnimate? "4px 4px 5px -2px rgba(0, 0, 0, 0.2)":""}}>
+    style={{boxShadow: props.darkMode?props.doAnimate? "0 25px 50px -12px rgba(255, 255, 255, 0.25)":"":
+    props.doAnimate?"0 25px 50px -12px rgba(0, 0, 0, 0.25)":""}}>
       <motion.div
         className= "w-full h-screen flex flex-col justify-center items-center text-center"
         key={contentIndex}
@@ -197,6 +198,7 @@ function Works(props) {
           , type:"spring", duration:2, bounce:0.5}} 
           className='relative' style={{top:cardParams.y , left:cardParams.x, width:cardParams.width, height:cardParams.height}}>
             <Card
+              darkMode = {props.darkMode}
               x = {cardParams.x}
               y = {cardParams.y}
               width={cardParams.width}
@@ -211,6 +213,7 @@ function Works(props) {
           , type:"spring", duration:2, bounce:0.5}}
           className='mt-4'>
               <Card
+              darkMode = {props.darkMode}
               x = {0}
               y = {0}
               width={cardParams.width/2}

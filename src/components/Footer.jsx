@@ -16,8 +16,10 @@ function Footer(props) {
         case 3 : props.setPage("about"); break;
       }
       props.setDoAnimate(false)
+      props.menuClicked()
     }, 2000);
-    
+
+
   };
 
   const isTablet = window.innerWidth < 1024;

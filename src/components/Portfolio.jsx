@@ -112,6 +112,7 @@ function Portfolio(props) {
 
         {Page==='hero' && (
           <Hero
+          darkMode={props.darkMode}
           firstOpen = {props.firstOpen} 
           heroImageEnter = {props.heroImageEnter}
           heroImageLeave = {props.heroImageLeave}
@@ -136,6 +137,7 @@ function Portfolio(props) {
               <MovingComponent> 
               
                   <Works
+                  darkMode={props.darkMode}
                   workLinkEnter = {props.workLinkEnter}
                   workLinkLeave = {props.workLinkLeave}
                   doAnimate = {doAnimate}
@@ -145,6 +147,7 @@ function Portfolio(props) {
             </MovingComponent>
             ):(
               <Works
+              darkMode={props.darkMode}
               workLinkEnter = {props.workLinkEnter}
               workLinkLeave = {props.workLinkLeave}
               doAnimate = {doAnimate}
@@ -169,6 +172,7 @@ function Portfolio(props) {
        
         { Page==='skills' && (
           <Skills 
+          darkMode={props.darkMode} 
           doAnimate = {doAnimate}
           Pagevariants = {Pagevariants}
           />

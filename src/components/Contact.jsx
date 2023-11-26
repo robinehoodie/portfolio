@@ -37,7 +37,8 @@ function Contact(props) {
 
   return (
     <motion.div className=' w-full h-screen flex flex-col justify-center items-center' 
-    style={{boxShadow: "4px 4px 5px -2px rgba(0, 0, 0, 0.2)"}}
+    style={{boxShadow: props.darkMode?props.doAnimate? "0 25px 50px -12px rgba(255, 255, 255, 0.25)":"":
+    props.doAnimate?"0 25px 50px -12px rgba(0, 0, 0, 0.25)":""}}
     animate={props.doAnimate ? 'animate' : ''}
     variants={props.Pagevariants}>
       <div className='flex flex-row justify-center items-center -mt-16 '>

@@ -33,7 +33,7 @@ function Loading(props) {
   return (
     
         <motion.div className="bg-black w-screen h-screen flex flex-col justify-center text-center items-center text-white text-8xl"  
-        animate= {count===100?{scale:310 , x:1480}:{}} transition={{duration:2, delay:2.3, type:spring}}
+        animate= {count===100?{scale:600 , x:8960 }:{}} transition={{duration:2, delay:2.3, type:spring}}
          >
              
              <motion.div initial={{opacity:1}} > {count}% </motion.div> 

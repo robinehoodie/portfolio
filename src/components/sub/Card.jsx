@@ -35,21 +35,29 @@ export default function Card(props) {
     })
   )
 
+  const handleScale = () => {
+    api({ scale: 2 });
+  };
+
   useGesture(
     {
-      
-      onDrag: ({ active, offset: [x, y] }) =>
-      api({ x, y, rotateX: 0, rotateY: 0, scale: active ? 1 : 1.1 }),
-    onPinch: ({ offset: [d, a] }) => api({ zoom: d / 200, rotateZ: a }),
-    onMove: ({ xy: [px, py], dragging }) =>
-      !dragging &&
-      api({
-        rotateX: calcX(py, y.get()+ Math.abs(props.y)),
-        rotateY: calcY(px, x.get()+ props.x),
-        scale: 1.1,
-      }),
-    onHover: ({ hovering }) =>
-      !hovering && api({ rotateX: 0, rotateY: 0, scale: 1 }),
+      onDrag: ({ active, offset: [x, y] }) => {
+        if (!active) {
+          api({ x, y, scale: 1.1 });
+        } else {
+          api({ x, y });
+        }
+      },
+      onPinch: ({ offset: [d, a] }) => api({ zoom: d / 200, rotateZ: a }),
+      onMove: ({ xy: [px, py], dragging }) => {
+        if (!dragging ) {
+          api({
+            rotateX: calcX(py, y.get() + Math.abs(props.y)),
+            rotateY: calcY(px, x.get() + props.x),
+          });
+        }
+      },
+      onHover: ({ hovering }) => !hovering && api({ rotateX: 0, rotateY: 0, scale: 1 }),
     },
     { target, eventOptions: { passive: false } }
   );
@@ -62,7 +70,7 @@ export default function Card(props) {
     }}>
       <animated.div
         ref={target}
-        className="card"
+        className={`${props.darkMode?"dark-modecard":"card"}`}
         style={{
         
           transform: `perspective(600px)`,
@@ -73,7 +81,9 @@ export default function Card(props) {
           rotateY,
           rotateZ,
           opacity,
-        }}>
+        }}
+        onClick={handleScale}>
+
         <animated.div >
          
             <div style={{ backgroundImage: `url(${props.imgs})` ,width: props.width, height: props.height,}} />
