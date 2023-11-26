@@ -20,11 +20,11 @@ function Works(props) {
       title: 'Timber Track',
       link: "https://github.com/w3barsi/timbertrack",
       cards: [
-        { key: 1, width: 300, height: 200, x: -410, y: 140, imgs: process.env.PUBLIC_URL + '/WorkData/timber0.png' },
-        { key: 2, width: 400, height: 200, x: 0, y: -10, imgs: process.env.PUBLIC_URL + '/WorkData/timber1.png'},
-        { key: 3, width: 400, height: 200, x: -448, y: -20, imgs: process.env.PUBLIC_URL + '/WorkData/timber2.png'},
-        { key: 4, width: 400, height: 200, x: 20, y: isLaptop? -70:-160, imgs: process.env.PUBLIC_URL + '/WorkData/timber3.png'},
-        { key: 5, width: 250, height: 150, x: -380, y: -190, imgs: process.env.PUBLIC_URL + '/WorkData/timber4.png'},
+        { key: 1, width: 300, height: 200, x: -410, y: 140, imgs:  'WorkData/timber0.png' },
+        { key: 2, width: 400, height: 200, x: 0, y: -10, imgs:'WorkData/timber1.png'},
+        { key: 3, width: 400, height: 200, x: -448, y: -20, imgs: 'WorkData/timber2.png'},
+        { key: 4, width: 400, height: 200, x: 20, y: isLaptop? -70:-160, imgs: 'WorkData/timber3.png'},
+        { key: 5, width: 250, height: 150, x: -380, y: -190, imgs:  'WorkData/timber4.png'},
       ],
     },
     {
