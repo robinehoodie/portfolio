@@ -3,6 +3,7 @@ import Card from './sub/Card.jsx';
 import { motion, useAnimation } from 'framer-motion';
 import Typed from 'react-typed';
 
+
 function Works(props) {
   const [contentIndex, setContentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
@@ -19,21 +20,21 @@ function Works(props) {
       title: 'Timber Track',
       link: "https://github.com/w3barsi/timbertrack",
       cards: [
-        { key: 1, width: 300, height: 200, x: -410, y: 140, imgs: '/WorkData/timber0.png' },
-        { key: 2, width: 400, height: 200, x: 0, y: -10, imgs: '/WorkData/timber1.png'},
-        { key: 3, width: 400, height: 200, x: -448, y: -20, imgs: '/WorkData/timber2.png'},
-        { key: 4, width: 400, height: 200, x: 20, y: isLaptop? -70:-160, imgs: '/WorkData/timber3.png'},
-        { key: 5, width: 250, height: 150, x: -380, y: -190, imgs: '/WorkData/timber4.png'},
+        { key: 1, width: 300, height: 200, x: -410, y: 140, imgs: process.env.PUBLIC_URL + '/WorkData/timber0.png' },
+        { key: 2, width: 400, height: 200, x: 0, y: -10, imgs: process.env.PUBLIC_URL + '/WorkData/timber1.png'},
+        { key: 3, width: 400, height: 200, x: -448, y: -20, imgs: process.env.PUBLIC_URL + '/WorkData/timber2.png'},
+        { key: 4, width: 400, height: 200, x: 20, y: isLaptop? -70:-160, imgs: process.env.PUBLIC_URL + '/WorkData/timber3.png'},
+        { key: 5, width: 250, height: 150, x: -380, y: -190, imgs: process.env.PUBLIC_URL + '/WorkData/timber4.png'},
       ],
     },
     {
       title: 'Timberoll',
       link: "https://github.com/robinehoodie/OOP",
       cards: [
-        { key: 1, width:400, height: 200, x: -350, y: 40, imgs: '/WorkData/payroll1.png' },
-        { key: 2, width: 300, height: 200, x: 70, y: isLaptop? -60:0, imgs: '/WorkData/payroll0.png'},
-        { key: 3, width: 400, height: 200, x: -430, y: -60, imgs: '/WorkData/payroll2.png'},
-        { key: 4, width: 400, height: 200, x: 50, y: isLaptop? -130:-100, imgs: '/WorkData/payroll3.png'},
+        { key: 1, width:400, height: 200, x: -350, y: 40, imgs: process.env.PUBLIC_URL + '/WorkData/payroll1.png' },
+        { key: 2, width: 300, height: 200, x: 70, y: isLaptop? -60:0, imgs: process.env.PUBLIC_URL + '/WorkData/payroll0.png'},
+        { key: 3, width: 400, height: 200, x: -430, y: -60, imgs: process.env.PUBLIC_URL + '/WorkData/payroll2.png'},
+        { key: 4, width: 400, height: 200, x: 50, y: isLaptop? -130:-100, imgs: process.env.PUBLIC_URL + '/WorkData/payroll3.png'},
       ],
     },
 
@@ -41,16 +42,16 @@ function Works(props) {
       title: 'Chess Game',
       link: "https://github.com/robinehoodie/OOP",
       cards: [
-        { key: 1, width: 300, height: 300, x: 100, y: isLaptop? 50:0, imgs: '/WorkData/chess1.png'},
-        { key: 2, width: 200, height: 200, x: -300, y: -130, imgs: '/WorkData/chess0.png'},
-        { key: 3, width: 300, height: 300, x: -50, y: -70, imgs: '/WorkData/chess2.png'},
+        { key: 1, width: 300, height: 300, x: 100, y: isLaptop? 50:0, imgs: process.env.PUBLIC_URL + '/WorkData/chess1.png'},
+        { key: 2, width: 200, height: 200, x: -300, y: -130, imgs: process.env.PUBLIC_URL + '/WorkData/chess0.png'},
+        { key: 3, width: 300, height: 300, x: -50, y: -70, imgs: process.env.PUBLIC_URL + '/WorkData/chess2.png'},
       ],
     }, 
     {
       title: 'Chat App',
       cards: [
-        { key: 1, width: 300, height: 200, x: -400, y: 200, imgs: '/WorkData/chat0.png'},
-        { key: 2, width: 250, height: 550, x: isLaptop? -30:0, y: -150, imgs: '/WorkData/chat1.png'},
+        { key: 1, width: 300, height: 200, x: -400, y: 200, imgs: process.env.PUBLIC_URL + '/WorkData/chat0.png'},
+        { key: 2, width: 250, height: 550, x: isLaptop? -30:0, y: -150, imgs: process.env.PUBLIC_URL + '/WorkData/chat1.png'},
       ],
     },
   ];
