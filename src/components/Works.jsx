@@ -31,10 +31,10 @@ function Works(props) {
       title: 'Timberoll',
       link: "https://github.com/robinehoodie/OOP",
       cards: [
-        { key: 1, width:400, height: 200, x: -350, y: 40, imgs: process.env.PUBLIC_URL + 'WorkData/payroll1.png' },
-        { key: 2, width: 300, height: 200, x: 70, y: isLaptop? -60:0, imgs: process.env.PUBLIC_URL + 'WorkData/payroll0.png'},
-        { key: 3, width: 400, height: 200, x: -430, y: -60, imgs: process.env.PUBLIC_URL + 'WorkData/payroll2.png'},
-        { key: 4, width: 400, height: 200, x: 50, y: isLaptop? -130:-100, imgs: process.env.PUBLIC_URL + 'WorkData/payroll3.png'},
+        { key: 1, width:400, height: 200, x: -350, y: 40, imgs:  + 'WorkData/payroll1.png' },
+        { key: 2, width: 300, height: 200, x: 70, y: isLaptop? -60:0, imgs:  + 'WorkData/payroll0.png'},
+        { key: 3, width: 400, height: 200, x: -430, y: -60, imgs:  + 'WorkData/payroll2.png'},
+        { key: 4, width: 400, height: 200, x: 50, y: isLaptop? -130:-100, imgs:  + 'WorkData/payroll3.png'},
       ],
     },
 
@@ -42,16 +42,16 @@ function Works(props) {
       title: 'Chess Game',
       link: "https://github.com/robinehoodie/OOP",
       cards: [
-        { key: 1, width: 300, height: 300, x: 100, y: isLaptop? 50:0, imgs: process.env.PUBLIC_URL + 'WorkData/chess1.png'},
-        { key: 2, width: 200, height: 200, x: -300, y: -130, imgs: process.env.PUBLIC_URL + 'WorkData/chess0.png'},
-        { key: 3, width: 300, height: 300, x: -50, y: -70, imgs: process.env.PUBLIC_URL + 'WorkData/chess2.png'},
+        { key: 1, width: 300, height: 300, x: 100, y: isLaptop? 50:0, imgs:  + 'WorkData/chess1.png'},
+        { key: 2, width: 200, height: 200, x: -300, y: -130, imgs:  + 'WorkData/chess0.png'},
+        { key: 3, width: 300, height: 300, x: -50, y: -70, imgs:  + 'WorkData/chess2.png'},
       ],
     }, 
     {
       title: 'Chat App',
       cards: [
-        { key: 1, width: 300, height: 200, x: -400, y: 200, imgs: process.env.PUBLIC_URL + 'WorkData/chat0.png'},
-        { key: 2, width: 250, height: 550, x: isLaptop? -30:0, y: -150, imgs: process.env.PUBLIC_URL + 'WorkData/chat1.png'},
+        { key: 1, width: 300, height: 200, x: -400, y: 200, imgs:  + 'WorkData/chat0.png'},
+        { key: 2, width: 250, height: 550, x: isLaptop? -30:0, y: -150, imgs:  + 'WorkData/chat1.png'},
       ],
     },
   ];
