@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react'
+import Loading from './components/Loading';
+import Cursor from './components/sub/Cursor';
 
 function App() {
+  const [loading, setLoading] = useState(true);
+
+  const handleLoadingComplete = () => {
+    setLoading(false);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className=' lg:overflow-hidden md:overflow-x-hidden' >
+     
+      {/* <Loading setLoadingComplete={handleLoadingComplete} /> */}
+      {/* <Cursor /> */}
+     
+       {loading ? (
+        <Loading setLoadingComplete={handleLoadingComplete} />
+      ) : (
+        <Cursor />
+      )}
     </div>
   );
 }
