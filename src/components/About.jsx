@@ -1,4 +1,4 @@
-import React, {useRef, useEffect} from 'react'
+import React, {useRef, useEffect, useState} from 'react'
 import { motion} from 'framer-motion'
 import MoveLetters from './sub/MoveLetters';
 import { useTrail, animated} from 'react-spring'
@@ -30,7 +30,9 @@ function About(props) {
   //   config: { mass: 5, tension: 500, friction: 80 },
   // });
 
-
+  const delays = [500, 600, 700, 800, 900, 1000];
+  const delays2 = [700, 600, 500, 400, 300, 200];
+ 
     const alternateContent = useRef(false);
       useEffect(() => {
         
@@ -53,10 +55,13 @@ function About(props) {
         return () => clearInterval(interval);
       }, []);
     
-      const [trail, api] = useTrail(items.length, () => ({
+      const [trail, api] = useTrail(items.length, (index) => ({
         rotateX: 0,
         rotateY: 0,
+        delay: delays[index],
+        delay2: delays2[index],
       }));
+      
     
       const isFlipped = useRef(false);
     
@@ -75,6 +80,28 @@ function About(props) {
       };
       const isTablet = window.innerWidth < 1024;
       const isMobile = window.innerWidth < 768;
+
+      
+
+      const [delayedDarkMode, setDelayedDarkMode] = useState(props.darkMode);
+
+      useEffect(() => {
+        const delayTimers = props.darkMode ? items.map((_, index) =>
+          setTimeout(() => {
+            setDelayedDarkMode((prev) => ({ ...prev, [index]: props.darkMode }));
+          }, delays[index])
+        ): 
+        items.map((_, index) =>
+          setTimeout(() => {
+            setDelayedDarkMode((prev) => ({ ...prev, [index]: props.darkMode }));
+          }, delays2[index])
+        ); 
+      
+        return () => {
+          delayTimers.forEach((timer) => clearTimeout(timer));
+        };
+      }, [props.darkMode]);
+      
 
   return (
     <motion.div className='w-full h-screen flex-row ' 
@@ -118,10 +145,10 @@ function About(props) {
                 left: 0,
                 width: '100%',
                 height: '100%',
-                backgroundColor: props.darkMode? "black":'#fafafa',
-                color: props.darkMode? "#fafafa":'black',
+                backgroundColor: isTablet? props.darkMode? "black":'#fafafa': delayedDarkMode[i] ? 'black' : '#fafafa',
+                color: isTablet? props.darkMode? '#fafafa':'black': delayedDarkMode[i] ? '#fafafa' : 'black',
                 fontSize: isTablet? isMobile? 15 :40:40,
-                border: props.darkMode? 'solid 2px #fafafa' : 'solid 2px #1a1a1a' ,
+                border: isTablet? props.darkMode? 'solid 2px #fafafa' : 'solid 2px #1a1a1a': delayedDarkMode[i] ? 'solid 2px #fafafa' : 'solid 2px #1a1a1a' ,
                 backfaceVisibility: 'hidden',
                 transform: rotateX.to((val) => `rotateX(${val}deg)`),
               }}
@@ -148,10 +175,10 @@ function About(props) {
                     left: 0,
                     width: '100%',
                     height: '100%',
-                    backgroundColor: props.darkMode? "black":'#fafafa',
-                    color: props.darkMode? "#fafafa":'black',
+                    backgroundColor: isTablet? props.darkMode? "black":'#fafafa': delayedDarkMode[i] ? 'black' : '#fafafa',
+                    color: isTablet? props.darkMode? '#fafafa':'black': delayedDarkMode[i] ? '#fafafa' : 'black',
                     fontSize: isTablet? isMobile? 10 :20:40,
-                    border: props.darkMode? 'solid 2px #fafafa' : 'solid 2px #1a1a1a' ,
+                    border: isTablet? props.darkMode? 'solid 2px #fafafa' : 'solid 2px #1a1a1a': delayedDarkMode[i] ? 'solid 2px #fafafa' : 'solid 2px #1a1a1a' ,
                     backfaceVisibility: 'hidden',
                     transform: rotateY.to((val) => `rotateY(${val}deg)`)
                   }}
@@ -196,10 +223,10 @@ function About(props) {
                     left: 0,
                     width: '100%',
                     height: '100%',
-                    backgroundColor: props.darkMode? "black":'#fafafa',
-                    color: props.darkMode? "#fafafa":'black',
+                    backgroundColor: isTablet? props.darkMode? "black":'#fafafa': delayedDarkMode[i] ? 'black' : '#fafafa',
+                    color: isTablet? props.darkMode? '#fafafa':'black': delayedDarkMode[i] ? '#fafafa' : 'black',
                     fontSize: isTablet? isMobile? 10  :20:40,
-                    border: props.darkMode? 'solid 2px #fafafa' : 'solid 2px #1a1a1a' ,
+                    border: isTablet? props.darkMode? 'solid 2px #fafafa' : 'solid 2px #1a1a1a': delayedDarkMode[i] ? 'solid 2px #fafafa' : 'solid 2px #1a1a1a' ,
                     transform: rotateY.to((val) => `rotateY(${180 - val}deg)`),
                     backfaceVisibility: 'hidden',
                   }}
