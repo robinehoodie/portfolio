@@ -1,4 +1,4 @@
-import React , {useState, useRef} from 'react'
+import React , {useState, useRef, useEffect} from 'react'
 import { motion, useAnimation } from 'framer-motion'
 import Navbar from './Navbar.jsx'
 import Background from './sub/Background.jsx';
@@ -84,6 +84,42 @@ function Portfolio(props) {
       },
     };
   
+    const allowedKeys = ['a', 'A', 'w', 'W', 's', 'S', 'c', 'C'];
+    const handleKeyPress = (event) => {
+      if(!doAnimate && allowedKeys.includes(event.key) ){
+        
+        const isSamePage = Page.charAt(0).toLowerCase() === event.key.toLowerCase();
+        if (isSamePage || event.ctrlKey) {
+          event.preventDefault();
+          return false;
+        } else {
+          setDoAnimate(true);
+          props.setFirstOpen(false);
+
+          setTimeout(() => {
+          if (!event.ctrlKey && (event.key === 'a' || event.key === 'A')) {
+            setPage("about");
+          } else if (!event.ctrlKey && (event.key === 'w' || event.key === 'W')){
+            setPage("work");
+          } else if (!event.ctrlKey && (event.key === 's' || event.key === 'S')) {
+            setPage("skills"); 
+          } else if (!event.ctrlKey && (event.key === 'c' || event.key === 'C')){
+            setPage("contact");
+          }
+          setDoAnimate(false)
+
+          }, 2000);
+        }
+      }
+    };
+  
+    useEffect(() => {
+      window.addEventListener('keydown', handleKeyPress);
+    
+      return () => {
+        window.removeEventListener('keydown', handleKeyPress);
+      };
+    }, [Page, doAnimate]);
 
   return (
     <motion.div className={` mx-auto py-2 ${isTablet? props.darkMode? "dark bg-black":"text-black bg-white":"" }`}  animate={props.darkMode && !isTablet? {color:"white"}: {}} 
@@ -119,6 +155,7 @@ function Portfolio(props) {
           containerRef = {containerRef}
           doAnimate = {doAnimate}
           Pagevariants = {Pagevariants}
+          
           />
           )}
 
@@ -141,6 +178,8 @@ function Portfolio(props) {
                   workLinkEnter = {props.workLinkEnter}
                   workLinkLeave = {props.workLinkLeave}
                   doAnimate = {doAnimate}
+                  workCardEnter = {props.workCardEnter}
+                  workCardLeave = {props.workCardLeave}
                   Pagevariants = {Pagevariants}
                   />
               
@@ -150,6 +189,7 @@ function Portfolio(props) {
               darkMode={props.darkMode}
               workLinkEnter = {props.workLinkEnter}
               workLinkLeave = {props.workLinkLeave}
+              
               doAnimate = {doAnimate}
               Pagevariants = {Pagevariants}
               />

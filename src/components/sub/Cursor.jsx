@@ -151,6 +151,17 @@ function Cursor() {
         y: mouseYPosition + 5
       },
 
+      workCards: {
+        opacity: 0,
+        backgroundColor : "transparent",
+        color: "#fff",
+        height: 80,
+        width: 80,
+        fontSize: "30px",
+        x: mouseXPosition + 50,
+        y: mouseYPosition + 50
+      },
+
     };
     
   
@@ -279,6 +290,16 @@ function Cursor() {
       setCursorVariant("default");
     }
 
+    function workCardEnter(event) {
+      setCursorText("");
+      setCursorVariant("workCards");
+    }
+  
+    function workCardLeave(event) {
+      setCursorText("");
+      setCursorVariant("default");
+    }
+
   return (
     <div className="h-screen w-screen" ref={ref}>
         <motion.div
@@ -290,30 +311,39 @@ function Cursor() {
           <span className="cursorText">{cursorText}</span>
         
         </motion.div>
+        {isTablet?
         <Portfolio
-            menuEnter = {menuEnter}
-            menuLeave = {menuLeave}
-            modeEnter = {modeEnter}
-            modeLeave = {modeLeave}
-            heroImageEnter = {heroImageEnter}
-            heroImageLeave = {heroImageLeave}
-            aboutImageEnter = {aboutImageEnter}
-            aboutImageLeave = {aboutImageLeave}
-            darkMode = {darkMode}
-            firstOpen = {firstOpen}
-            setFirstOpen = {setFirstOpen}
-            toggleDarkMode = {toggleDarkMode}
-            contactEnter = {contactEnter}
-            contactLeave = {contacLeave}
-            contactRef = {contactRef}
-            setCursorText = {setCursorText}
-            resumeEnter = {resumeEnter}
-            resumeLeave = {resumeLeave}
-            workLinkEnter = {workLinkEnter}
-            workLinkLeave = {workLinkLeave}
-            heroEnter = {heroEnter}
-            heroLeave = {heroLeave}
-          />
+        darkMode = {darkMode}
+        firstOpen = {firstOpen}
+        setFirstOpen = {setFirstOpen}
+        toggleDarkMode = {toggleDarkMode}
+        />:
+          <Portfolio
+          menuEnter = {menuEnter}
+          menuLeave = {menuLeave}
+          modeEnter = {modeEnter}
+          modeLeave = {modeLeave}
+          heroImageEnter = {heroImageEnter}
+          heroImageLeave = {heroImageLeave}
+          aboutImageEnter = {aboutImageEnter}
+          aboutImageLeave = {aboutImageLeave}
+          darkMode = {darkMode}
+          firstOpen = {firstOpen}
+          setFirstOpen = {setFirstOpen}
+          toggleDarkMode = {toggleDarkMode}
+          contactEnter = {contactEnter}
+          contactLeave = {contacLeave}
+          contactRef = {contactRef}
+          setCursorText = {setCursorText}
+          resumeEnter = {resumeEnter}
+          resumeLeave = {resumeLeave}
+          workLinkEnter = {workLinkEnter}
+          workLinkLeave = {workLinkLeave}
+          heroEnter = {heroEnter}
+          heroLeave = {heroLeave}
+          workCardEnter = {workCardEnter}
+          workCardLeave = {workCardLeave}
+        />}
     </div>
   )
 }

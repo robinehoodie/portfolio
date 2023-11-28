@@ -42,24 +42,24 @@ function Contact(props) {
     animate={props.doAnimate ? 'animate' : ''}
     variants={props.Pagevariants}>
       <div className='flex flex-row justify-center items-center -mt-16 '>
-      <motion.a  href="https://github.com/robinehoodie"  target="_blank" ref={props.contactRef.contact1} 
+      <motion.a  href="https://github.com/robinehoodie"  target="_blank" ref={isTablet?{}:props.contactRef.contact1} 
       className=' w-[100px] h-[90px] rounded-full  m-5 cursor-none ' 
       style={{backgroundColor: props.darkMode?"white":0}}
-       onMouseEnter={() => props.contactEnter(0)} onMouseLeave={props.contactLeave} 
+       onMouseEnter={isTablet?() => {}:() => props.contactEnter(0)} onMouseLeave={props.contactLeave} 
        initial={{x:-800}} animate={{x:0}} transition={{type:"spring", velocity:"100"}}>
         <img src={github} alt="github" className="w-full h-full"
          />
       </motion.a>
-      <motion.a href="https://www.linkedin.com/in/robine-cole-jumalon-a2976527b/"  target="_blank" ref={props.contactRef.contact2} 
+      <motion.a href="https://www.linkedin.com/in/robine-cole-jumalon-a2976527b/"  target="_blank" ref={isTablet?{}:props.contactRef.contact2} 
       className=' w-[100px] h-[90px] rounded-md  m-5 cursor-none ' 
-      onMouseEnter={() => props.contactEnter(1)} onMouseLeave={props.contactLeave}
+      onMouseEnter={isTablet?() => {}:() => props.contactEnter(1)} onMouseLeave={props.contactLeave}
       initial={{y:800}} animate={{y:[800,150,150,0,0]}} transition={{type:"tween", times:[1,1.2], duration:2}}>
         <img src={linkedIn} alt="linkedIn" className="w-full h-full" 
          />
       </motion.a>
-      <motion.a onClick={openGmailCompose} target="_blank" ref={props.contactRef.contact3} 
+      <motion.a onClick={openGmailCompose} target="_blank" ref={isTablet?{}:props.contactRef.contact3} 
       className=' w-[100px] h-[90px] rounded-lg  m-5 cursor-none ' 
-      onMouseEnter={() => props.contactEnter(2)} onMouseLeave={props.contactLeave}
+      onMouseEnter={isTablet?() => {}:() => props.contactEnter(2)} onMouseLeave={props.contactLeave}
       initial={{x:800}} animate={{x:0}} transition={{type:"spring", velocity:"100"}}>
         <img src={gmail} alt="gmail" className="w-full h-full" 
          />

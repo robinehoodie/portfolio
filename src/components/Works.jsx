@@ -79,11 +79,11 @@ function Works(props) {
         setContentIndex(contentIndex - 1);
         controlsCard.start({ y: 0 });
         controlsTitle.start({ opacity: 1 });
-      }, 2000);
+      }, 1000);
 
       setTimeout(() => {
         setIsAnimating(false);
-      }, 3500);
+      }, 2500);
     }
   }
 
@@ -97,11 +97,11 @@ function Works(props) {
         
         setTimeout(() => {
           setContentIndex(contentIndex + 1);
-        }, 2000);
+        }, 1000);
 
         setTimeout(() => {
           setIsAnimating(false);
-        }, 3000);
+        }, 2000);
 
       }
   }
@@ -120,11 +120,11 @@ function Works(props) {
         
         setTimeout(() => {
           setContentIndex(contentIndex + 1);
-        }, 2000);
+        }, 1000);
 
         setTimeout(() => {
           setIsAnimating(false);
-        }, 3000);
+        }, 2000);
 
       } else if (e.deltaY < 0 && contentIndex > 0) {
         setIsAnimating(true);
@@ -137,11 +137,11 @@ function Works(props) {
           setContentIndex(contentIndex - 1);
           controlsCard.start({ y: 0 });
           controlsTitle.start({ opacity: 1 });
-        }, 2000);
+        }, 1000);
 
         setTimeout(() => {
           setIsAnimating(false);
-        }, 3500);
+        }, 2500);
       }
     }
   };
@@ -194,9 +194,11 @@ function Works(props) {
            !isTablet ? (
           <motion.div key={cardParams.key} initial={direction === "down"?{scale:0}:direction==="up"?{y:1200}:{scale:0}}
           animate={controlsCard} 
-          transition={{ delay: animationDirection === "exit"? (contents[contentIndex].cards.length - index ) * 0.2 : index * 0.2
-          , type:"spring", duration:2, bounce:0.5}} 
-          className='relative' style={{top:cardParams.y , left:cardParams.x, width:cardParams.width, height:cardParams.height}}>
+          transition={{ delay: animationDirection === "exit"? (contents[contentIndex].cards.length - index ) * 0.1 : index * 0.1
+          , type:"spring", duration:1, bounce:0.5}} 
+          className='relative' style={{top:cardParams.y , left:cardParams.x, width:cardParams.width, height:cardParams.height}}
+          onMouseEnter={props.workCardEnter}
+          onMouseLeave={props.workCardLeave}>
             <Card
               darkMode = {props.darkMode}
               x = {cardParams.x}
@@ -209,8 +211,8 @@ function Works(props) {
           ): (
             <motion.div key={cardParams.key} initial={direction === "down"?{scale:0}:direction==="up"?{y:1200}:{scale:0}}
           animate={controlsCard} 
-          transition={{ delay: animationDirection === "exit"? (contents[contentIndex].cards.length - index ) * 0.2 : index * 0.2
-          , type:"spring", duration:2, bounce:0.5}}
+          transition={{ delay: animationDirection === "exit"? (contents[contentIndex].cards.length - index ) * 0.1 : index * 0.1
+          , type:"spring", duration: 1, bounce:0.5}}
           className='mt-4'>
               <Card
               darkMode = {props.darkMode}

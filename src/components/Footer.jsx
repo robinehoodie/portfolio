@@ -8,6 +8,11 @@ function Footer(props) {
     
     props.setDoAnimate(true)
     props.setFirstOpen(false)
+    let delay = 2000
+    if(isTablet){
+      delay = 100
+    }
+
     setTimeout(() => {
       switch(num){
         case 0 : props.setPage("contact"); break;
@@ -17,8 +22,7 @@ function Footer(props) {
       }
       props.setDoAnimate(false)
       props.menuClicked()
-    }, 2000);
-
+    }, delay);
 
   };
 

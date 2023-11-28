@@ -101,6 +101,42 @@ function About(props) {
           delayTimers.forEach((timer) => clearTimeout(timer));
         };
       }, [props.darkMode]);
+
+      const [size, setSize] = useState("200px")
+      const [margin, setMargin] = useState("m-10")
+      const [aboutLayout, setAboutLayout] = useState("justify-center items-center text-center")
+      const [titleTextSize, setTitleTextSize] = useState(40)
+      const [quoteTextSize, setQuoteTextSize] = useState(40)
+      const [lowerLayout, setLowerLayout] = useState(" h-3/6 justify-end text-end")
+      const [textLowerLayout, setTextLowerLayout] = useState("absolute")
+
+      useEffect(() => {
+        if (isMobile){
+          setSize("45px")
+          setMargin("ml-2")
+          setAboutLayout("mt-10")
+          setTitleTextSize(15)
+          setQuoteTextSize(10)
+          setLowerLayout("h-1/6 justify-center text-center")
+          setTextLowerLayout("absolute")
+        }else if (isTablet){
+          setSize("100px")
+          setMargin("ml-5")
+          setAboutLayout(" justify-center text-center")
+          setTitleTextSize(40)
+          setQuoteTextSize(20)
+          setLowerLayout("h-2/6 justify-center text-center mt-10")
+          setTextLowerLayout("absolute left-28")
+        }else{
+          setSize("200px")
+          setMargin("m-10")
+          setAboutLayout("justify-center items-center text-center")
+          setTitleTextSize(40)
+          setQuoteTextSize(40)
+          setLowerLayout(" h-3/6 justify-end text-end")
+          setTextLowerLayout("absolute")
+        }
+      }, []);
       
 
   return (
@@ -117,21 +153,21 @@ function About(props) {
     <p className=''><MoveLetters word="impactful solutions."/></p>
     </motion.div>
     
-    <motion.div className={`w-full lg:h-2/6 h-1/6 ${isTablet? isMobile? " justify-center text-center" :"mt-10": "justify-center items-center text-center"} flex flex-row `}
+    <motion.div className={`w-full lg:h-2/6 h-1/6 ${aboutLayout} flex flex-row `}
     >
     {trail.map(({ rotateX, rotateY }, i) => (
         <motion.div key={items[i].key} onClick={handleClick} 
         initial={{y: i%2 === 0 ? -700:700 }} animate={{y:0}} transition={{delay: 1.5 + i * 0.1, duration:1}}> 
           <animated.div
-            className= {`${isTablet?isMobile?"ml-2":"ml-5 ":"m-10"}`}
+            className= {margin}
             style={{
               cursor : 'none',
-              width: isTablet? isMobile? '45px':'100px':'200px',
-              height: isTablet? isMobile? '45px':'100px':'200px',
+              width: size,
+              height: size,
               position: 'relative',
               transformStyle: 'preserve-3d',
             }}
-            onMouseEnter={() => props.aboutImageEnter(i)}
+            onMouseEnter={isTablet?() =>{}:() => props.aboutImageEnter(i)}
             onMouseLeave={props.aboutImageLeave}
           >
             <animated.div
@@ -147,7 +183,7 @@ function About(props) {
                 height: '100%',
                 backgroundColor: isTablet? props.darkMode? "black":'#fafafa': delayedDarkMode[i] ? 'black' : '#fafafa',
                 color: isTablet? props.darkMode? '#fafafa':'black': delayedDarkMode[i] ? '#fafafa' : 'black',
-                fontSize: isTablet? isMobile? 15 :40:40,
+                fontSize: titleTextSize,
                 border: isTablet? props.darkMode? 'solid 2px #fafafa' : 'solid 2px #1a1a1a': delayedDarkMode[i] ? 'solid 2px #fafafa' : 'solid 2px #1a1a1a' ,
                 backfaceVisibility: 'hidden',
                 transform: rotateX.to((val) => `rotateX(${val}deg)`),
@@ -177,7 +213,7 @@ function About(props) {
                     height: '100%',
                     backgroundColor: isTablet? props.darkMode? "black":'#fafafa': delayedDarkMode[i] ? 'black' : '#fafafa',
                     color: isTablet? props.darkMode? '#fafafa':'black': delayedDarkMode[i] ? '#fafafa' : 'black',
-                    fontSize: isTablet? isMobile? 10 :20:40,
+                    fontSize: quoteTextSize,
                     border: isTablet? props.darkMode? 'solid 2px #fafafa' : 'solid 2px #1a1a1a': delayedDarkMode[i] ? 'solid 2px #fafafa' : 'solid 2px #1a1a1a' ,
                     backfaceVisibility: 'hidden',
                     transform: rotateY.to((val) => `rotateY(${val}deg)`)
@@ -225,7 +261,7 @@ function About(props) {
                     height: '100%',
                     backgroundColor: isTablet? props.darkMode? "black":'#fafafa': delayedDarkMode[i] ? 'black' : '#fafafa',
                     color: isTablet? props.darkMode? '#fafafa':'black': delayedDarkMode[i] ? '#fafafa' : 'black',
-                    fontSize: isTablet? isMobile? 10  :20:40,
+                    fontSize: quoteTextSize,
                     border: isTablet? props.darkMode? 'solid 2px #fafafa' : 'solid 2px #1a1a1a': delayedDarkMode[i] ? 'solid 2px #fafafa' : 'solid 2px #1a1a1a' ,
                     transform: rotateY.to((val) => `rotateY(${180 - val}deg)`),
                     backfaceVisibility: 'hidden',
@@ -246,11 +282,11 @@ function About(props) {
         
     </motion.div>
 
-    <motion.div className={`w-full  ${isTablet? isMobile? "h-1/6 justify-center text-center" :"h-2/6 justify-center text-center mt-10":" h-3/6 justify-end text-end"} lg:text-left  lg:pl-[54%] lg:pt-[3%] md:text-lg text-xs lg:text-2xl select-none`} initial={{x:900}} animate={{x:0}} transition={{type:"spring", delay:.5}}>
+    <motion.div className={`w-full  ${lowerLayout} lg:text-left  lg:pl-[54%] lg:pt-[3%] md:text-lg text-xs lg:text-2xl select-none`} initial={{x:900}} animate={{x:0}} transition={{type:"spring", delay:.5}}>
     <p><MoveLetters word="I can help you with ...."/></p>
     <motion.p className='relative'>
       <motion.p
-        className={`${isTablet? isMobile?"absolute ":"absolute left-28" : "absolute"} text-black`}
+        className={`${textLowerLayout} text-black`}
         initial={{scale:1}}
         animate= {props.darkMode?{scale:0}:{scale:1}}
         transition={props.darkMode?{delay:.7}:{delay:.2}}
@@ -260,7 +296,7 @@ function About(props) {
        <p className='lg:pl-6'><MoveLetters word="and effectively communicate your brand's message."/></p>
        </motion.p>
       <motion.p
-        className={`${isTablet? isMobile?"absolute ": "absolute left-28" : "absolute"} text-white`}
+        className={`${textLowerLayout} text-white`}
         initial={{scale:0}}
         animate= {props.darkMode?{scale:1}:{scale:0}}
         transition={props.darkMode?{delay:.7}:{delay:.2}}
