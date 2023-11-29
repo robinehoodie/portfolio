@@ -21,7 +21,7 @@ body{
 .switch {
   width: 80px;
   height: 30px;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(141, 141, 141, 0.4);
   display: flex;
   justify-content: flex-start;
   border-radius: 50px;
@@ -31,14 +31,13 @@ body{
 
 .switch[data-isOn="true"] {
   justify-content: flex-end;
-  background-color: rgb(255, 255, 255,0.4);
-  
 }
 
 .handle {
   width: 20px;
   height: 20px;
   border-radius: 40px;
+  background-color: white;
 }
 
 .circle {
@@ -54,6 +53,7 @@ body{
   width: 10px;
   background-color: #1e91d6;
   border-radius: 200px;
+  pointer-events: none;
   color: #fff;
   text-align: center;
   font-size: 16px;

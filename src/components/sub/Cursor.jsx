@@ -1,4 +1,4 @@
-import React, {useState, useRef} from 'react'
+import React, {useState, useRef, useEffect} from 'react'
 import useMouse from "@react-hook/mouse-position";
 import { motion } from 'framer-motion'
 import Portfolio from '../Portfolio';
@@ -164,7 +164,22 @@ function Cursor() {
 
     };
     
-  
+    const [text, setText] = useState("🌜")
+    const [hasInteracted, setHasInteracted] = useState(false);
+
+    useEffect(() => {
+      if (darkMode && hasInteracted) {
+        setCursorText("🌞");
+        setText("🌞")
+      } else if(!hasInteracted){
+        setCursorText("");
+      }else {
+        setCursorText("🌜");
+        setText("🌜")
+      }
+    }, [darkMode, hasInteracted]);
+
+
     const spring = {
       type: "spring",
       stiffness: 500,
@@ -192,7 +207,8 @@ function Cursor() {
     }
   
     function modeEnter(event) {
-      setCursorText(darkMode?"🌞":"🌜");
+      setHasInteracted(true)
+      setCursorText(text)
       setCursorVariant("mode");
     }
   

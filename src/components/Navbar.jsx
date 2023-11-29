@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react'
 import { motion } from 'framer-motion'
-import { Icon } from '@iconify/react';
 import MoveLetters from './sub/MoveLetters.jsx';
 import logoDark from '../image/logoDark.png'
 import logoLight from '../image/logoLight.png'
@@ -29,6 +28,8 @@ function Navbar(props) {
 
   }, [props.darkMode]);
 
+
+
   return (
     <div className=' w-full flex justify-between p-4 items-center cursor-pointer '>
         <motion.div className=' w-[10%] xl:pl-16 pt-2'  initial= {{y:-100}} 
@@ -41,7 +42,7 @@ function Navbar(props) {
         onMouseLeave={props.heroLeave}/> 
         </motion.div>
 
-        <motion.div className="switch lg:w-[90px] lg:h-[40px] " data-isOn={props.darkMode} onClick={props.toggleDarkMode} 
+        {/* <motion.div className="switch lg:w-[90px] lg:h-[40px] " data-isOn={props.darkMode} onClick={props.toggleDarkMode} 
         initial= {{y:-100}} 
         animate={{y:0}} 
         transition={{delay:1.5, type:'spring', stiffness:200}}
@@ -57,7 +58,22 @@ function Navbar(props) {
             >
                 <Icon onClick={props.toggleDarkMode} className="w-3/4 h-3/4 m-auto mt-1" icon={`${props.darkMode? "line-md:sunny-outline-to-moon-loop-transition": "line-md:moon-to-sunny-outline-loop-transition"}`}/>
             </motion.div>
+        </motion.div> */}
+
+        <motion.div className="switch lg:w-[90px] lg:h-[40px] z-20" data-isOn={props.darkMode} onClick={props.toggleDarkMode}
+        initial= {{y:-100}} 
+        animate={{y:0}} 
+        transition={{delay:1.5, type:'spring', stiffness:200}}
+        onMouseEnter={props.modeEnter}
+        onMouseLeave={props.modeLeave}>
+
+          <motion.div  
+          className="handle lg:w-[30px] lg:h-[30px] -z-10" 
+          layout 
+          transition={props.isTablet?{spring, duration:1} :props.darkMode?{spring, delay: 0, duration:0.5}: {spring, delay: 0, duration:.5}} >
+          </motion.div>
         </motion.div>
+
         <motion.div className='md:text-2xl text-s xl:pr-16 cursor-pointer flex-row flex select-none ' 
         initial= {{y:-100}} animate={{y:0}} transition={{delay:1, type:'spring', stiffness:200}} 
         onClick={props.menuClicked}

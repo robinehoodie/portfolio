@@ -39,7 +39,7 @@ function Hero(props) {
       </div>
     )}
       <motion.div className='lg:w-1/2 lg:mt-[-10%] lg:my-0 my-[20%] md:w-full flex flex-col justify-center items-center text-center '>
-      <motion.p className='lg:text-3xl text-xl pb-3 flex-row flex' initial={{x:-600}} animate={{x:0}}  transition={{type:'spring', delay:props.firstOpen?1.6: 0, duration:1 }} >
+      <motion.p className='lg:text-3xl text-xl pb-3 flex-row flex' initial={{x:-600}} animate={{x:0}}  transition={{type:'spring', delay:props.firstOpen?1.6: 0, duration:1 }}>
       <MoveLetters word="Hello,"/>
       &nbsp;
       <MoveLetters word="I"/> &nbsp;
