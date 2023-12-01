@@ -204,3 +204,35 @@ body{
   box-shadow: #D6D6E7 0 3px 7px inset;
   transform: translateY(2px);
 }
+
+
+.work .desc{
+  opacity: 0;
+  position: absolute;
+  background-color: #908c97;
+  color: #fff;
+  padding: 15px 30px;
+  border-radius: 100px;
+  top: 65px; 
+  white-space: nowrap;
+  transform: translate(50%, 50px);
+  letter-spacing: 1px;
+  font-size: 20px;
+  transition: all 0.3s;
+}
+
+.work  .desc::before {
+  content: "";
+  position: absolute;
+  width: 15px; height: 15px;
+  background-color: #908c97;
+  top: 0; left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.work  div:hover + .desc {
+  opacity: 1;
+  transform: translateX(50%);
+  box-shadow: 0 10px 20px rgba(86, 86, 198, 0.3);
+}
+

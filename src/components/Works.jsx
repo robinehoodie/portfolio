@@ -26,6 +26,13 @@ function Works(props) {
         { key: 4, width: 400, height: 200, x: 20, y: isLaptop? -70:-160, imgs: 'WorkData/timber3.png'},
         { key: 5, width: 250, height: 150, x: -380, y: -190, imgs:  'WorkData/timber4.png'},
       ],
+      description: [
+        "An Inventory Management System",
+        "for a client at Danao City",
+        <br/>,
+        "Stack: Laravel, Tailwind"
+      ],
+      descPosition: "-80%"
     },
     {
       title: 'Timberoll',
@@ -36,6 +43,10 @@ function Works(props) {
         { key: 3, width: 400, height: 200, x: -430, y: -60, imgs:  'WorkData/payroll2.png'},
         { key: 4, width: 400, height: 200, x: 50, y: isLaptop? -130:-100, imgs:  'WorkData/payroll3.png'},
       ],
+      description: [
+        "I have a dream when there are",
+        "The water will always be there",
+      ]
     },
 
     {
@@ -46,6 +57,11 @@ function Works(props) {
         { key: 2, width: 200, height: 200, x: -300, y: -130, imgs:  'WorkData/chess0.png'},
         { key: 3, width: 300, height: 300, x: -50, y: -70, imgs:  'WorkData/chess2.png'},
       ],
+      description: [
+        "I have a dream when there are",
+        "The water will always be there",
+      ]
+
     }, 
     {
       title: 'Chat App',
@@ -53,6 +69,10 @@ function Works(props) {
         { key: 1, width: 300, height: 200, x: -400, y: 200, imgs:  'WorkData/chat0.png'},
         { key: 2, width: 250, height: 550, x: isLaptop? -30:0, y: -150, imgs:  'WorkData/chat1.png'},
       ],
+      description: [
+        "I have a dream when there are",
+        "The water will always be there",
+      ]
     },
   ];
 
@@ -179,14 +199,23 @@ function Works(props) {
             <p className='inline md:ml-40' onClick={handleNext}>Next→ </p>  
         </motion.div>
         )}
-        <motion.div className={`${!isTablet? "2xl:text-5xl lg:text-4xl fixed right-60": "text-3xl"}`} animate={controlsTitle}  onClick = {()=>console.log(contents[contentIndex].cards.length)}>
+    
+        <motion.div className={`${!isTablet? "2xl:text-5xl lg:text-4xl fixed right-60 work ": "text-3xl"}`} 
+        animate={controlsTitle}     
+        onMouseEnter={props.workLinkEnter} onMouseLeave={props.workLinkLeave}
+        >
        
-         <a href={[contents[contentIndex].link]} target='__blank' onMouseEnter={() => props.workLinkEnter(contentIndex)} onMouseLeave={props.workLinkLeave}>
-            <Typed
+         <a href={[contents[contentIndex].link]} target='__blank' >
+            <div><Typed
               strings={[contents[contentIndex].title]}
               typeSpeed={70}
-
-            />
+            /></div>
+            <span className='desc' style={{left: contents[contentIndex].descPosition}}>
+              <p>Click For Link</p> <br></br>
+              {contents[contentIndex].description.map((paragraph, index) => (
+              <p key={index}>{paragraph}</p>
+            ))}
+            </span>
           </a>
         </motion.div>
   

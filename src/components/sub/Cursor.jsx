@@ -53,8 +53,8 @@ function Cursor() {
         width: 10,
         fontSize: "16px",
         backgroundColor: darkMode?"white":"black",
-        x: mouseXPosition,
-        y: mouseYPosition,
+        x: mouseXPosition + 15,
+        y: mouseYPosition + 15, 
         transition: {
           type: "spring",
           mass: 0.6
@@ -130,14 +130,9 @@ function Cursor() {
       },
       
       workLink: {
-        opacity: isTablet?0:1,
-        backgroundColor : bgColor,
-        color: "#fff",
-        height: 80,
-        width: 80,
-        fontSize: "30px",
-        x: mouseXPosition + 5,
-        y: mouseYPosition + 5
+        opacity: 0,
+        x: mouseXPosition + 35,
+        y: mouseYPosition + 35
       },
 
       home: {
@@ -279,15 +274,6 @@ function Cursor() {
     }
 
     const workLinkEnter = (number) => {
-      setCursorText("🔗");
-      switch(number){
-        case 0 : setBgColor("#212123"); break;
-        case 1 : setBgColor("#616063"); break;
-        case 2 : setBgColor("#ccb9b1"); break;
-        case 3 : setBgColor("#c08267"); break;
-        case 4 : setBgColor("#a0583c"); break;
-      }
-      
       setCursorVariant("workLink");
     }
   

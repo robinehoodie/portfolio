@@ -80,7 +80,7 @@ function About(props) {
       };
       const isTablet = window.innerWidth < 1024;
       const isMobile = window.innerWidth < 768;
-
+      const isLaptop = window.innerWidth === 1024;
       
 
       const [delayedDarkMode, setDelayedDarkMode] = useState(props.darkMode);
@@ -127,6 +127,14 @@ function About(props) {
           setQuoteTextSize(20)
           setLowerLayout("h-2/6 justify-center text-center mt-10")
           setTextLowerLayout("absolute left-28")
+        }else if(isLaptop){
+          setSize("120px")
+          setMargin("m-5")
+          setAboutLayout("justify-center items-center text-center")
+          setTitleTextSize(40)
+          setQuoteTextSize(30)
+          setLowerLayout(" h-3/6 justify-end text-end")
+          setTextLowerLayout("absolute")
         }else{
           setSize("200px")
           setMargin("m-10")
@@ -145,7 +153,7 @@ function About(props) {
     props.doAnimate?"0 25px 50px -12px rgba(0, 0, 0, 0.25)":""}}
     animate={props.doAnimate ? 'animate' : ''}
     variants={props.Pagevariants}>
-    <motion.div  className='w-full h-1/4 pt-16 lg:pl-10 lg:text-left text-center lg:text-2xl md:text-lg text-xs select-none' initial={{x:-550}} animate={{x:0}} transition={{type:"spring"}}>
+    <motion.div  className='w-full h-1/4 pt-16 lg:pl-10 lg:text-left text-center xl:text-2xl lg:text-xl md:text-lg text-xs select-none' initial={{x:-550}} animate={{x:0}} transition={{type:"spring"}}>
     <p className='inline-block'><p className='inline-block'><MoveLetters word="I am"/></p>&nbsp;<b className='inline-block'><MoveLetters word="Robine Cole Jumalon"/></b><p className='inline-block'><MoveLetters word=", a "/></p> <b className='inline-block'><MoveLetters word="DEVELOPER"/></b> <p className='inline-block'><MoveLetters word="and a "/></p>&nbsp;
     <b className='inline-block'><MoveLetters word="DESIGNER"/></b></p>
     <p className=''><MoveLetters word="I specialize in crafting user-centric digital experiences,"/></p>
@@ -282,7 +290,7 @@ function About(props) {
         
     </motion.div>
 
-    <motion.div className={`w-full  ${lowerLayout} lg:text-left  lg:pl-[54%] lg:pt-[3%] md:text-lg text-xs lg:text-2xl select-none`} initial={{x:900}} animate={{x:0}} transition={{type:"spring", delay:.5}}>
+    <motion.div className={`w-full  ${lowerLayout} lg:text-left  xl:pl-[54%] lg:pl-[35%] lg:pt-[3%] md:text-lg text-xs xl:text-2xl lg:text-xl select-none`} initial={{x:900}} animate={{x:0}} transition={{type:"spring", delay:.5}}>
     <p><MoveLetters word="I can help you with ...."/></p>
     <motion.p className='relative'>
       <motion.p
