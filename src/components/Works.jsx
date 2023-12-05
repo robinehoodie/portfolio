@@ -44,9 +44,12 @@ function Works(props) {
         { key: 4, width: 400, height: 200, x: 50, y: isLaptop? -130:-100, imgs:  'WorkData/payroll3.png'},
       ],
       description: [
-        "I have a dream when there are",
-        "The water will always be there",
-      ]
+        "A Payroll System",
+        "for a client at Danao City",
+        <br/>,
+        "Stack: Laravel, Tailwind, React"
+      ],
+      descPosition: "-110%"
     },
 
     {
@@ -58,9 +61,12 @@ function Works(props) {
         { key: 3, width: 300, height: 300, x: -50, y: -70, imgs:  'WorkData/chess2.png'},
       ],
       description: [
-        "I have a dream when there are",
-        "The water will always be there",
-      ]
+        "A Chess Game that works ",
+        "similar to the original",
+        <br/>,
+        "Stack: Java"
+      ],
+      descPosition: "-60%"
 
     }, 
     {
@@ -70,9 +76,28 @@ function Works(props) {
         { key: 2, width: 250, height: 550, x: isLaptop? -30:0, y: -150, imgs:  'WorkData/chat1.png'},
       ],
       description: [
-        "I have a dream when there are",
-        "The water will always be there",
-      ]
+        "A simple Chat App",
+        <br/>,
+        "Stack: Laravel, Tailwind"
+      ],
+      descPosition: "-80%"
+    },
+
+    {
+      title: '3D Shirt',
+      link: "https://github.com/robinehoodie/3D-Shirt",
+      cards: [
+        { key: 1, width: 400, height: 200, x: -250, y: 20, imgs:  'WorkData/3DShirt1.png'},
+        { key: 2, width: 400, height: 200, x: 180, y: isLaptop?-50:80, imgs:  'WorkData/3DShirt2.png'},
+        { key: 3, width: 400, height: 200, x: -500, y: -50, imgs:  'WorkData/3DShirt3.png'},
+        { key: 4, width: 300, height: 200, x: -20, y: -50, imgs:  'WorkData/3DShirt0.png'},
+      ],
+      description: [
+        "A 3D Shirt Customizer",
+        <br/>,
+        "Stack: Next.js"
+      ],
+      descPosition: "-100%"
     },
   ];
 
@@ -256,10 +281,10 @@ function Works(props) {
           )
         )}
       </motion.div>
-      {!isTablet? (<motion.div className='text-lg fixed bottom-16 right-[30%]' animate={!scrollMore?{y:100}:{}} 
-      transition={{duration:0.5}}> Scroll for more ⇅ </motion.div>) : ("") }
-      <motion.div className='text-2xl fixed bottom-16 right-12' >
-        {contentIndex + 1}/{contents.length}
+      {!isTablet? (<motion.div className='text-lg fixed bottom-[10%] right-[30%]' animate={!scrollMore?{y:100}:{}} 
+      transition={{duration:0.5}}> <b> Scroll for more ⇅ </b> </motion.div>) : ("") }
+      <motion.div className='text-2xl fixed bottom-[10%] right-12 ' >
+       <b> {contentIndex + 1}/{contents.length} </b>
       </motion.div>
     </motion.div>
   );
