@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/portfolio/static/css/main.ceb4085c.css",
-    "main.js": "/portfolio/static/js/main.69da5ed6.js",
+    "main.css": "/portfolio/static/css/main.4b759804.css",
+    "main.js": "/portfolio/static/js/main.c44fab6c.js",
     "static/media/heropic1.jpg": "/portfolio/static/media/heropic1.6c8036cf187633c84b7e.jpg",
     "static/media/Aboutpic6.jpeg": "/portfolio/static/media/Aboutpic6.e24c29ca89f0d8eb6820.jpeg",
     "static/media/Aboutpic2.jpeg": "/portfolio/static/media/Aboutpic2.764adca36cb583fa64a6.jpeg",
@@ -13,11 +13,11 @@
     "static/media/resume.png": "/portfolio/static/media/resume.be7896ba40353f61b62c.png",
     "static/media/Robine_Cole_Jumalon - Resume.pdf": "/portfolio/static/media/Robine_Cole_Jumalon - Resume.eb48a6d2d040fc905a57.pdf",
     "index.html": "/portfolio/index.html",
-    "main.ceb4085c.css.map": "/portfolio/static/css/main.ceb4085c.css.map",
-    "main.69da5ed6.js.map": "/portfolio/static/js/main.69da5ed6.js.map"
+    "main.4b759804.css.map": "/portfolio/static/css/main.4b759804.css.map",
+    "main.c44fab6c.js.map": "/portfolio/static/js/main.c44fab6c.js.map"
   },
   "entrypoints": [
-    "static/css/main.ceb4085c.css",
-    "static/js/main.69da5ed6.js"
+    "static/css/main.4b759804.css",
+    "static/js/main.c44fab6c.js"
   ]
 }
